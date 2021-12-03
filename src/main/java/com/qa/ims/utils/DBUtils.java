@@ -65,6 +65,7 @@ public class DBUtils {
 			}).reduce((acc, next) -> acc + next).orElse(0);
 		} catch (Exception e) {
 			LOGGER.debug(e);
+			System.out.println(e.getMessage());
 		}
 		return modified;
 	}

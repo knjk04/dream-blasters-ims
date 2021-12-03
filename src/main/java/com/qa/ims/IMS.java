@@ -26,8 +26,8 @@ public class IMS {
 
 	public void imsSystem() {
 		LOGGER.info("Welcome to the Inventory Management System!");
-		DBUtils.connect();
-
+		DBUtils dbUtils = DBUtils.connect();
+		dbUtils.init("src\\main\\resources\\sql-schema.sql", "src\\main\\resources\\sql-data.sql");
 		Domain domain = null;
 		do {
 			LOGGER.info("Which entity would you like to use?");
