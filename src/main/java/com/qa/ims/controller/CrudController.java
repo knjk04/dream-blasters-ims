@@ -16,4 +16,10 @@ public interface CrudController<T> {
 
 	int delete();
 
+	T addItem();
+
+	float calculateCost();
+
+	T removeItem();
+
 }

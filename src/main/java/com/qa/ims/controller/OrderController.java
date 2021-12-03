@@ -7,7 +7,6 @@ import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.domain.OrderItem;
 import com.qa.ims.utils.Utils;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,10 +52,12 @@ public class OrderController implements CrudController<Order> {
         List<Order> ordersWithItems = new ArrayList<>();
         for(Order order : orders){
             Order orderWithItems = new Order(order.getId(), order.getFkCustomerId(), order.getCost());
-            List<Long> itemInOrder = orderToItemIds.get(order.getId());
-            for (Long itemId : itemInOrder) {
-                Item item = itemDAO.read(itemId);
-                orderWithItems.addItem(item);
+            if(orderToItemIds.containsKey(order.getId())) {
+                List<Long> itemInOrder = orderToItemIds.get(order.getId());
+                for (Long itemId : itemInOrder) {
+                    Item item = itemDAO.read(itemId);
+                    orderWithItems.addItem(item);
+                }
             }
             ordersWithItems.add(orderWithItems);
         }
@@ -100,7 +101,13 @@ public class OrderController implements CrudController<Order> {
         return orderDAO.delete(id);
     }
 
-    public Order addItemToOrder(Long orderId, Long itemId){
+
+    @Override
+    public Order addItem(){
+        LOGGER.info("Please enter the id of the order you want to add an item to");
+        Long orderId = utils.getLong();
+        LOGGER.info("Please enter the item id that you want to add");
+        Long itemId = utils.getLong();
         Item item = itemDAO.read(itemId);
         Order order = orderDAO.read(orderId);
         order.addItem(item);
@@ -109,12 +116,26 @@ public class OrderController implements CrudController<Order> {
         return order;
     }
 
-    public Order removeItemFromOrder(Long orderId, Long itemId){
+    @Override
+    public Order removeItem(){
+        LOGGER.info("Please enter the id of the order you want to remove from");
+        Long orderId = utils.getLong();
+        LOGGER.info("Please enter the item id that you want to remove");
+        Long itemId = utils.getLong();
         Item item = itemDAO.read(itemId);
         Order order = orderDAO.read(orderId);
         order.removeItem(item);
         orderDAO.update(order);
         orderItemDAO.deleteItemFromOrder(orderId, itemId);
         return order;
+    }
+
+    @Override
+    public float calculateCost(){
+        LOGGER.info("Please enter the id order you would like to calculate the cost of");
+        Long orderId = utils.getLong();
+        Order order = orderDAO.read(orderId);
+        float order_cost = order.calculateCost();
+        return order_cost;
     }
 }

@@ -32,7 +32,7 @@ public class OrderItemDAO implements  Dao<OrderItem>{
     public List<OrderItem> readAll() {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM order_items");) {
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM order_item");) {
             List<OrderItem> orderItems = new ArrayList<>();
             while (resultSet.next()) {
                 orderItems.add(modelFromResultSet(resultSet));
@@ -48,7 +48,7 @@ public class OrderItemDAO implements  Dao<OrderItem>{
     public OrderItem readLatest() {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM order_items ORDER BY id DESC LIMIT 1");) {
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM order_item ORDER BY id DESC LIMIT 1");) {
             resultSet.next();
             return modelFromResultSet(resultSet);
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public class OrderItemDAO implements  Dao<OrderItem>{
     @Override
     public OrderItem read(Long id) {
         try (Connection connection = DBUtils.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM order_items WHERE id = ?");) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM order_item WHERE id = ?");) {
             statement.setLong(1, id);
             try (ResultSet resultSet = statement.executeQuery();) {
                 resultSet.next();

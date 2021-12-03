@@ -106,7 +106,7 @@ public class OrderDAO implements Dao<Order>{
     public Order update(Order order) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              PreparedStatement statement = connection
-                     .prepareStatement("UPDATE items SET cost = ?, fkCustomerId = ? WHERE id = ?");) {
+                     .prepareStatement("UPDATE items SET cost = ?, fk_customer_id = ? WHERE id = ?");) {
             statement.setFloat(1, order.getCost());
             statement.setFloat(2, order.getFkCustomerId());
             statement.setLong(3, order.getId());

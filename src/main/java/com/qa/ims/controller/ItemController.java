@@ -84,4 +84,19 @@ public class ItemController  implements CrudController<Item> {
         return itemDAO.delete(id);
     }
 
+    @Override
+    public Item addItem() {
+        return null;
+    }
+
+    @Override
+    public float calculateCost() {
+        return 0;
+    }
+
+    @Override
+    public Item removeItem() {
+        return null;
+    }
+
 }

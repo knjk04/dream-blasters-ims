@@ -41,7 +41,7 @@ public class Order {
         this.fkCustomerId = fkCustomerId;
     }
 
-    private float calculateCost(){
+    public float calculateCost(){
         cost = 0;
         for(Item item : items.keySet()){
             cost += item.getPrice() * items.get(item);
@@ -103,6 +103,7 @@ public class Order {
     }
 
     public void addItem(Item item){
+        System.out.println(item);
         if(!items.containsKey(item)){
             items.put(item, 0);
         }
@@ -112,7 +113,8 @@ public class Order {
 
 
     public void removeItem(Item item){
-        if(!items.containsKey(item) && items.get(item) > 0){
+        System.out.println(item);
+        if(items.containsKey(item) && items.get(item) > 0){
             items.put(item, items.get(item) - 1);
         } else{
             System.out.println("Warning: Cannot delete item that is not in order!");
