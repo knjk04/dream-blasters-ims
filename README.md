@@ -1,7 +1,6 @@
-Coverage: 34%
-# Project Title
+# Inventory Management System - Dream Blasters
 
-One Paragraph of project description goes here
+A command line interface to update an inventory and orders databse.
 
 ## Getting Started
 
@@ -9,78 +8,61 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* Java 8
+* MySQL
 
-```
-Give examples
-```
+Instructions for these packages can be found on their respective websites.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Clone the repository 
 
 ```
-Give the example
+$ git clone git@github.com:knjk04/dream-blasters-ims.git
 ```
 
-And repeat
+Build the binary
 
 ```
-until finished
+$ mvn clean package
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
-### Unit Tests 
-
-Explain what these tests test, why and how to run them
-
+Have fun! Run the application with
 ```
-Give an example
-```
+$ java -jar target/ims-{version}-jar-with-dependencies.jar
+Welcome to the Inventory Management System!
+Communications link failure
 
-### Integration Tests 
-Explain what these tests test, why and how to run them
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Communications link failure
 
-```
-Give an example
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Which entity would you like to use?
+CUSTOMER: Information about customers
+ITEM: Individual Items
+ORDER: Purchases of items
+STOP: To close the application
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
+* [Java 8](https://www.oracle.com/java/technologies/java8.html) - Runtime
 * [Maven](https://maven.apache.org/) - Dependency Management
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
+* [MySQL](https://www.mysql.com/) - Database
+* ❤️ Love
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Alexandru Amarandei** - *Initial work* - [AlexandruAmarandei](https://github.com/AlexandruAmarandei)
+* **Karan Kumar** - *Initial work* - [knjk04](https://github.com/knjk04)
+* **Sultan Mahmood** - *Initial work* - [Sultanm12](https://github.com/sultanm12)
+* **Kanyinsola Sagoe** - *Initial work* - [KaySagoe](https://github.com/kaysagoe)
+* **Amrik Singh** - *Initial work* - [AmrikSD](https://github.com/AmrikSD)
 
 ## License
 
 This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
-
-*For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
 
