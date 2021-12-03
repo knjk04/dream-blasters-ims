@@ -1,6 +1,6 @@
 # Inventory Management System - Dream Blasters
 
-A command line interface to update an inventory and orders databse.
+A command line interface to update an inventory and orders database.
 
 ## Getting Started
 
