@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `ims`.`items` (
 );
 
 CREATE TABLE IF NOT EXISTS `ims`.`order_item` (
+    id int primary key auto_increment,
     fk_order_id int not null,
     fk_item_id int not null,
     foreign key (fk_order_id) references orders(id),
